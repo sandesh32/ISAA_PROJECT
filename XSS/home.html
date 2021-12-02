@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="home.html">Login</a></li>
+        </ul>
+    </nav>
+    <br><br>
+    </div>
+    <form id="myform" method="POST" target="/">
+        <label for="id">UserID: </label>
+        <input type="email" name="id" id="id" placeholder="Eg: sandesh" required>
+        <br>
+        <br>
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" placeholder="*********" required>
+        <br>
+        <br>
+        <button type="submit" id="submit" onclick="changeloc()">Login</button>
+        <br><br>
+    </form>
+
+</body>
+<script>
+    if (localStorage.cookie) {
+        window.location.href = "./profile.html";
+    }
+
+    function changeloc() {
+        var id = document.getElementById("id").value;
+        var pw = document.getElementById("password").value;
+        localStorage.cookie = id + "AIx23fakjqh124hfe" + pw;
+        window.location.href = "./profile.html";
+    }
+</script>
+
+</html>

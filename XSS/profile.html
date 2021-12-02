@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="./profile.html">Profile</a></li>
+            <li><a href="./home.html" onclick="logout()">Log Out</a></li>
+        </ul>
+    </nav>
+    <br><br>
+    <h1>Welcome! You are logged in!</h1>
+    <br>
+    <label for="ask"><h4>Mention your queries below:</h4> </label>
+    <input type="text" name="ask" id="ask" placeholder="Eg: What is the purpose of this project?" size="50" required><br><br>
+    <input type="text" name="name" id="name" placeholder="Sandesh"><br><br>
+    <button onclick="sendquery()">Send Query</button>
+    <br>
+    <div id="ansquery"></div>
+</body>
+<script>
+    if (!localStorage.cookie) {
+        window.location.href = "./home.html";
+    }
+
+    function logout() {
+        localStorage.removeItem("cookie");
+    }
+
+    function sendquery() {
+        var query = document.getElementById("ask").value;
+        if (query.substr(0, 8) === "<script>") {
+            query = query.substr(15);
+            query = query.substring(0, query.length - 11);
+            if (query === "ocalStorage.cooki") {
+                alert(localStorage.cookie);
+            } else {
+                alert(query);
+            }
+        } else {
+            var name = document.getElementById("name").value;
+            document.getElementById("ansquery").innerHTML = `<br><h5>Query by ${name}: <br><br> ${query}</h5>`;
+        }
+    }
+</script>
+
+</html>
